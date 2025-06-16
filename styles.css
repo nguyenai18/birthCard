@@ -1,0 +1,110 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    margin: 0;
+}
+.birthday-card{
+    width: 600px;
+    height: 900px;
+    overflow: visible;
+    background-color: maroon;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /*box-sizing: border-box;*/
+    padding: 20px;
+
+}
+
+.birthday-card svg{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height:150px;
+    max-width: 600px;
+    overflow: visible;
+}
+.birthday-card text{
+    fill: white;
+    font-size: 70px;
+    font-family: "Mea Culpa", cursive;
+    font-style: normal;
+}
+
+.birthday-card a{
+    color: white;
+    text-decoration: underline;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  
+}
+.birthday-card::after, .birthday-card::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), maroon,darkred, red, white, darkred, maroon);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1; /*push it behind */
+    padding : 5px; /*thickness of the border */
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.birthday-card::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+.content{
+    margin-top: -35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+h1{
+    color: white;
+}
+.age {
+    color: black;
+    font-weight: 400;
+    font-family: "Modak", system-ui;
+    font-size: 100px;
+    font-style: normal;
+    text-shadow: 0 0 10px red, 0 0 10px white;
+
+}
+
+h2{
+    color: white;
+}
+
+.to-line {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 30px;
+}
